@@ -1,5 +1,3 @@
-//test swzuo
-
 String fileName = "ProgenDataStreamTotal11-11-12-2.csv";
 FileParser filedata;
 
