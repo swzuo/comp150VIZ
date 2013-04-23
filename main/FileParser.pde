@@ -46,13 +46,11 @@ class FileParser extends Model{
       String oprs2 ="U-S U-C U-M U-G";
       String[] oprArray1 = oprs1.split("\\s+");
       for(int k = 0; k < oprArray1.length; k++){
-//        allActionNum[i][k] = actions[i].split(" "+oprArray1[k]+" ").length - 1;
-          allActionNum[i][k] = match(actions[i],"["+oprArray1[k]+"]").length - 1;
+        allActionNum[i][k] = actions[i].split(" "+oprArray1[k]+" ").length - 1;
       }
       String[] oprArray2 = oprs2.split("\\s+");
       for(int k = 0; k < oprArray2.length; k++){
-//        allActionNum[i][k+oprArray1.length] = actions[i].split(oprArray2[k]).length - 1;
-          allActionNum[i][k+oprArray1.length] = match(actions[i],"["+oprArray2[k]+"]").length - 1;
+        allActionNum[i][k+oprArray1.length] = (actions[i]+" ").split(oprArray2[k]).length - 1;
       }
       println(ids[i]);
       for(int j = 0; j < sortOpr; j++){
