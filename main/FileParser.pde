@@ -36,11 +36,43 @@ class FileParser extends Model{
     mission4 = new String[size];
     countsOfAction = new int[size];
     usersMissionNum = new int[size];
+    int sortOpr = 8;
+    allActionNum = new int[size][sortOpr];
     for(int i = 0; i < size; i++){
+      String[] oneAction = actions[i].split("\\s+");
+      countsOfAction[i] = oneAction.length;
+      
+      String oprs1 ="C T P G"; 
+      String oprs2 ="U-S U-C U-M U-G";
+      String[] oprArray1 = oprs1.split("\\s+");
+      for(int k = 0; k < oprArray1.length; k++){
+//        allActionNum[i][k] = actions[i].split(" "+oprArray1[k]+" ").length - 1;
+          allActionNum[i][k] = match(actions[i],"["+oprArray1[k]+"]").length - 1;
+      }
+      String[] oprArray2 = oprs2.split("\\s+");
+      for(int k = 0; k < oprArray2.length; k++){
+//        allActionNum[i][k+oprArray1.length] = actions[i].split(oprArray2[k]).length - 1;
+          allActionNum[i][k+oprArray1.length] = match(actions[i],"["+oprArray2[k]+"]").length - 1;
+      }
+      println(ids[i]);
+      for(int j = 0; j < sortOpr; j++){
+        print(allActionNum[i][j]+" ");
+      }
+      println();
+//      int[] counter = new int[sortOpr];
+//      int counter[0] = actions[i].split(" C ").length - 1;
+//      int counter[1] = actions[i].split(" T ").length - 1;
+//      int counter[2] = actions[i].split("U-S").length - 1;
+//      int counter[3] = actions[i].split("U-C").length - 1;
+//      int counter[4] = actions[i].split("U-M").length -1;
+//      int counter[5] = actions[i].split("U-G").length - 1;
+//      int counter[6] = actions[i].split(" P ").length - 1;
+//      int counter[7] = actions[i].split(" G ").length - 1;
+      
+      
       if(labels[i] == 0){
 //        println(ids[i]);
-        String[] oneAction = actions[i].split("\\s+");
-        countsOfAction[i] = oneAction.length;  
+        
         String[] missionsStr = split(actions[i]," M M ");
         usersMissionNum[i] = 3;
 //        println(usersMissionNum[i]);
@@ -60,8 +92,6 @@ class FileParser extends Model{
 //        println();
       }else{
 //        println(ids[i]);
-        String[] oneAction = actions[i].split("\\s+");
-        countsOfAction[i] = oneAction.length;  
         String[] missionsStr = split(actions[i]," M M ");
         usersMissionNum[i] = missionsStr.length-1;
 //        println(usersMissionNum[i]);

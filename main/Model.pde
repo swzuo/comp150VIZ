@@ -1,15 +1,15 @@
 public abstract class Model{
   private final ArrayList<View> canvas = new ArrayList<View>();
   
-  public void attach(View other){
+  public void Attach(View other){
     canvas.add(other);
   }
   
-  public void detach(View other){
+  public void Detach(View other){
     canvas.remove(other);
   }
   
-  public void notify(){
+  public void Notify(){
     for(View o : canvas ){
       o.update();
     }

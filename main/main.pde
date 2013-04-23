@@ -4,6 +4,6 @@ FileParser filedata;
 void setup(){
     filedata = new FileParser(fileName);
     filedata.seperateMission();
-    filedata.notify();
+    filedata.Notify();
 }
 
